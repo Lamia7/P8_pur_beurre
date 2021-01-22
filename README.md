@@ -26,7 +26,8 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 + ...
 
 ### Checklist 📝
-- [ ] Initialize django app
+- Download postgreSQL, added django + psycopg2 + libpq-dev
+- [x] Initialize django project
 - [ ] Modify default settings
 - [ ] Create templates folder for templates organization
 - [ ] Create base.html template
