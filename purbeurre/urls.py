@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('search.urls')),  # if path is empty, will look for views in the search app
     #path('users/', include('users.urls')),
     path('registration/', users_views.registration, name="registration"),
+    path('authentication/', users_views.authentication, name="authentication"),
 ]

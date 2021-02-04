@@ -10100,30 +10100,30 @@ header.masthead {
   background-attachment: scroll;
   background-size: cover;
 }
-header.masthead, header.registration h1 {
+header.masthead, header.registration, header.authentication h1 {
   font-size: 2.25rem;
 }
 @media (min-width: 992px) {
-  header.masthead, header.registration {
+  header.masthead, header.registration, header.authentication {
     height: 100vh;
     min-height: 40rem;
     padding-top: 4.5rem;
     padding-bottom: 0;
   }
-  header.masthead, header.registration p {
+  header.masthead, header.registration, header.authentication p {
     font-size: 1.15rem;
   }
-  header.masthead, header.registration h1 {
+  header.masthead, header.registration, header.authentication h1 {
     font-size: 3rem;
   }
 }
 @media (min-width: 1200px) {
-  header.masthead, header.registration h1 {
+  header.masthead, header.registration, header.authentication h1 {
     font-size: 3.5rem;
   }
 }
 
-header.registration {
+header.registration, header.authentication {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/ratatouille-11.jpg");
