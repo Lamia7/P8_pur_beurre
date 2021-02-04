@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('search.urls')),  # if path is empty, will look for views in the search app
     #path('users/', include('users.urls')),
-    path('registration/', users_views.registration, name="registration"),
-    path('authentication/', users_views.authentication, name="authentication"),
+    path('register/', users_views.register, name="register"),
+    path('auth/', users_views.auth, name="auth"),
 ]

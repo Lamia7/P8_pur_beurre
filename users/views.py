@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 
-def registration(request):
-    return render(request, 'registration.html')
+def register(request):
+    return render(request, 'register.html')
 
-def authentication(request):
-    return render(request, 'authentication.html')
+def auth(request):
+    return render(request, 'auth.html')

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <!-- Authentication -->
-<header class="authentication">
+<header class="auth">
   <div class="container h-100">
     <div
       class="row h-100 align-items-center justify-content-center text-center"
@@ -14,7 +14,7 @@
   </div>
 </header>
 
-<section class="page-section bg-light" id="authentication">
+<section class="page-section bg-light" id="auth">
   <div class="container">
     <form>
       <div class="form-group">
@@ -40,7 +40,7 @@
         />
       </div>
       <button type="submit" class="btn btn-primary">Se connecter</button>
-      <a href="{% url 'registration' %}" class="btn btn-secondary" role="button" aria-pressed="true">S'inscrire</a>
+      <a href="{% url 'register' %}" class="btn btn-secondary" role="button" aria-pressed="true">S'inscrire</a>
     </form>
   </div>
 </section>
