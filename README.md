@@ -33,8 +33,9 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 - [x] Create base.html template
 - [x] Create the search app
 - [x] Create home.html template
-- [ ] Create users app
-- [ ] Create signup.html template
+- [x] Create users app
+- [x] Create registration.html template
+- [ ] Create authentication.html template
 
 ### Ressources used to create this program 🔧
 ***BACK***
