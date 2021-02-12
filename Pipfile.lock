@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2c41b2c68d2e02814c5b2f766245d967ad5351f5eb35b51f0b7280ceed19f599"
+            "sha256": "de39c0aadee2c201de2d46682c9b5e750328bdecf38be6355aa0805c81b02fc6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,14 @@
             ],
             "index": "pypi",
             "version": "==3.1.6"
+        },
+        "django-crispy-forms": {
+            "hashes": [
+                "sha256:21cf717b621f93cdf01bac0a419b520fe3b17bffd67e140b6c16558d9b75ab80",
+                "sha256:a2aa34ee3fccafdebb33c016cbd60246b37df85dae717637c6419b929fa24b25"
+            ],
+            "index": "pypi",
+            "version": "==1.11.0"
         },
         "psycopg2": {
             "hashes": [

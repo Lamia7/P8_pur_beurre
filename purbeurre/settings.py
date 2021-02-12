@@ -34,14 +34,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django_apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my_apps
     'search',
     'users',
+
+    # others
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +79,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'users.User'
 
 WSGI_APPLICATION = 'purbeurre.wsgi.application'
 
@@ -142,3 +150,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# Dj Crispy forms library
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+
+"""when user tries to go to a page only available to logged in users,
+redirects to the login page, then to the page they tried to access to (@decorators in views)"""
+LOGIN_URL = 'login'
