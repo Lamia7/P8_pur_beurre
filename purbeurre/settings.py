@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,19 +34,29 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django_apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my_apps
+    'search',
+    'users',
+
+    # others
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # handles sessions during requests
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    # associates users to requests using sessions
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -54,8 +67,8 @@ ROOT_URLCONF = 'purbeurre.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,  # will look for templates folder in each app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -67,6 +80,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
+
 WSGI_APPLICATION = 'purbeurre.wsgi.application'
 
 
@@ -75,10 +90,23 @@ WSGI_APPLICATION = 'purbeurre.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        #'HOST': 'localhost',
+        #'PORT': '5432',
     }
 }
+"""
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': '',
+        'HOST': os.getenv("HOST"),
+        'PORT': os.getenv("PORT"),
+    }
+"""
 
 
 # Password validation
@@ -118,3 +146,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Dj Crispy forms library
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+
+"""when user tries to go to a page only available to logged in users,
+redirects to the login page, then to the page they tried to access to (@decorators in views)"""
+LOGIN_URL = 'login'
