@@ -11,12 +11,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         """Feeds the database with data from API"""
-        
+
         self.clear_db()
 
+        # Launches import of data from API
         myapi = Api()
         products = myapi.avoid_empty()
-        #print(products)
 
         if products is not None:
             self.stdout.write(self.style.SUCCESS(
@@ -26,26 +26,20 @@ class Command(BaseCommand):
                 "Products import from API : ERROR"))
             return
 
-        with ShadyBar('Inserting to database...', max=len(products)) as bar:
+        with ShadyBar('Inserting to database...', max=len(products), suffix='%(percent)d%%') as bar:
             for product in products:
-                #print("TYPEOFPRODUCT: ", type(product))
                 name = product.get("product_name_fr")[
                     :150].strip().lower().capitalize()
-                #print("CONTENTNAME", name, type(name))
                 brands = product.get("brands")[:150].upper()
-                #print("CONTENT BRANDS", brands, type(brands))
                 barcode = product.get("code")[:13].strip()
-                #print("BARCODE", type(barcode))
-                #print("BARCODE PRINT", barcode)
                 url = product.get("url")
                 image_url = product.get("image_url")
                 image_small_url = product.get("image_small_url")
                 nutriscore = product.get("nutriscore_grade")[0].upper()
-                #print("NUTRISCOREHELLOE", type(nutriscore))
-                #print("NUTRISCOREHELLOE", nutriscore)
                 categories = categories = [name.strip().lower().capitalize()
-                                        for name in product['categories'].split(',')]
+                                           for name in product['categories'].split(',')]
 
+                # Get some of the nutriments keys/values
                 nutriments_list = [
                     "energy_100g",
                     "sugars_100g",
@@ -77,7 +71,6 @@ class Command(BaseCommand):
                     sodium_100g=nutriments_dict.get("sodium_100g"),
                     fat_100g=nutriments_dict.get("fat_100g"),
                     salt_100g=nutriments_dict.get("salt_100g"),
-                    # categories=set_categories()
                 )
 
                 try:
@@ -94,16 +87,13 @@ class Command(BaseCommand):
                             except IntegrityError:  # Avoid duplicated cat
                                 cat_obj = Category.objects.get(name=category)
 
-                            product_obj.categories.add(cat_obj)  # add() Django method to link manytomany relation
+                            # add() Django method to link manytomany relation
+                            product_obj.categories.add(cat_obj)
                             product_obj.save()
 
-                    #print("HELLOPRODUCT", product_obj.name, product_obj.url,
-                        #product_obj.sugars_100g, product_obj.categories.all())
-                
                 except IntegrityError:
                     continue
                 bar.next()
-
 
     def clear_db(self):
         """Clears the database"""
@@ -115,4 +105,4 @@ class Command(BaseCommand):
         cat_obj.delete()
 
         #favorite_obj = Favorite.objects.all()
-        #favorite_obj.delete()
+        # favorite_obj.delete()

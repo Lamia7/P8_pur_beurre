@@ -17,7 +17,7 @@ class Api():
                         "tag_contains_0": "contains",
                         "tag_0": "france",
                         "sort_by": "unique_scans_n",
-                        "page_size": 100,
+                        "page_size": 750,
                         "json": 1,
                         # field make the request faster
                         "fields": "product_name_fr,code,brands,nutriscore_grade,url,"
