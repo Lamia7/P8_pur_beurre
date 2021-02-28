@@ -16,16 +16,17 @@ class Product(models.Model):
 
     name = models.CharField(max_length=150, unique=True)
     brands = models.CharField(max_length=150)
-    barcode = models.BigIntegerField(unique=True)
+    barcode = models.CharField(max_length=13, unique=True)
+    nutriscore = models.CharField(max_length=1)
     url = models.URLField()
     image_url = models.URLField()
-    nutriscore = models.CharField(max_length=1)
-    energy_100g = models.FloatField(default=0, blank=True)  # can be empty
-    sugars_100g = models.FloatField(default=0, blank=True)
-    sodium_100g = models.FloatField(default=0, blank=True)
-    fat_100g = models.FloatField(default=0, blank=True)
-    salt_100g = models.FloatField(default=0, blank=True)
-    categories = models.ManyToManyField(Category, related_name='categories')
+    image_small_url = models.URLField()
+    energy_100g = models.FloatField(default=0, null=True)  # can be empty
+    sugars_100g = models.FloatField(default=0, null=True)
+    sodium_100g = models.FloatField(default=0, null=True)
+    fat_100g = models.FloatField(default=0, null=True)
+    salt_100g = models.FloatField(default=0, null=True)
+    categories = models.ManyToManyField(Category)
 
     def __str__(self):
         return f"{self.name}, {self.nutriscore}"
