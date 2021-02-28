@@ -22,8 +22,9 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 ### How does it work ?
 
 ### Features 📋
-+ ...
-+ ...
++ Authentication
++ (Research of a product and find a healthier substitute)
++ (Save substitutes)
 
 ### Checklist 📝
 - [x] Download postgreSQL, added django + psycopg2 + libpq-dev
@@ -36,13 +37,17 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 - [x] Create users app
 - [x] Create register.html template/view + add to urls
 - [x] Create auth.html template/view + add to urls
-- [ ] 
+- [x] Create models for products, categories and favorites
+- [x] Download data from OpenFoodFacts API
+- [x] Create database and insert data into it
 
 ### Ressources used to create this program 🔧
 ***BACK***
 - Language : Python 3.8
 - Framework : Django
 - Testing library : pytest
+- HTTP library : requests
+- Progression bar library : progress
 
 ***FRONT***
 - Languages : Javascript, HTML5 & CSS3

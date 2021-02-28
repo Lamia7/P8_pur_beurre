@@ -8,6 +8,8 @@ django = "*"
 psycopg2 = "*"
 python-dotenv = "*"
 django-crispy-forms = "*"
+requests = "*"
+progress = "*"
 
 [dev-packages]
 

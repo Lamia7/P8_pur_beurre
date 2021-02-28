@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from search.models import Product, Category
+
+# Registered models to access via 'admin' page
+admin.site.register(Product)
+admin.site.register(Category)
