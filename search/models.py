@@ -44,4 +44,4 @@ class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favorite_user")
 
     def __str__(self):
-        return f"Produit: {self.product}, Substitut: {self.substitute}"
+        return f"Produit: {self.product}, Substitut: {self.substitute}, User: {self.user}"
