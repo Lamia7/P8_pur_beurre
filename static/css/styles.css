@@ -419,6 +419,37 @@ h6, .h6 {
   line-height: 1.2;
 }
 
+.card-score-A, .card-score-B, 
+.card-score-C, .card-score-D, .card-score-E {
+  width: 30px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  padding: 5px 10px;
+}
+
+.card-score-A {
+  background-color: #008b50;
+} 
+
+.card-score-B {
+  background-color: #a6c858;
+} 
+
+.card-score-C {
+  background-color: #fed501;
+} 
+
+.card-score-D {
+  background-color: #f28d01;
+} 
+
+.card-score-E {
+  background-color: #e73614;
+} 
 /*.user_icon {
   color: #86ebe6;
 }*/
@@ -4437,7 +4468,9 @@ input[type=button].btn-block {
 .card-img-top,
 .card-img-bottom {
   flex-shrink: 0;
-  width: 100%;
+  object-fit: scale-down; /* doc */
+  max-width: 100%;
+  max-height: 250px; /* à revoir*/
 }
 
 .card-img,
@@ -9870,7 +9903,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-white-50 {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: #fff;
 }
 
 .text-hide {
@@ -10075,16 +10108,17 @@ hr.light {
   }
   #mainNav.navbar-scrolled {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+    background-color: #345A61;
   }
   #mainNav.navbar-scrolled .navbar-brand {
-    color: #212529;
+    color: rgba(255, 255, 255, 0.7);
   }
   #mainNav.navbar-scrolled .navbar-brand:hover {
     color: #f4623a;
   }
   #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link {
-    color: #212529;
+    /*color: #212529;*/
+    color: rgba(255, 255, 255, 0.7);
   }
   #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link:hover {
     color: #f4623a;
@@ -10100,11 +10134,11 @@ header.masthead {
   background-attachment: scroll;
   background-size: cover;
 }
-header.masthead, header.register, header.login, header.account h1 {
+header.masthead, header.register, header.login, header.account, header.products h1 {
   font-size: 2.5rem;
 }
 @media (min-width: 992px) {
-  header.masthead, header.register, header.login, header.account {
+  header.masthead, header.register, header.login, header.account, header.products {
     height: 100vh;
     min-height: 40rem;
     padding-top: 4.5rem;
@@ -10113,17 +10147,17 @@ header.masthead, header.register, header.login, header.account h1 {
   header.masthead, header.register, header.login p {
     font-size: 1.15rem;
   }
-  header.masthead, header.register, header.login, header.account h1 {
+  header.masthead, header.register, header.login, header.account, header.products h1 {
     font-size: 2.5rem;
   }
 }
 @media (min-width: 1200px) {
-  header.masthead, header.register, header.login, header.account h1 {
+  header.masthead, header.register, header.login, header.account, header.products h1 {
     font-size: 2.75rem;
   }
 }
 
-header.register, header.login, header.account {
+header.register, header.login, header.account, header.products {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/ratatouille-11.jpg");

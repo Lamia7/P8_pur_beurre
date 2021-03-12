@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<!-- Products -->
+<header class="products">
+  <div class="container h-100">
+    <div
+      class="row h-100 align-items-center justify-content-center text-center"
+    >
+      <div class="col-lg-10 align-self-end">
+        <h1 class="text-white font-weight-bold">{{ title }}</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="page-section bg-light" id="products">
+  <h3 class="text-center">Voici le résultat de votre recherche :</h3>
+  <div class="container">
+    <div class="row">
+      {% for product in products %}
+      <div class="col-lg-4 col-md-12">
+        <div class="card mx-1 my-3 shadow p-3 mb-5 bg-white rounded">
+          <img
+            class="card-img-top"
+            src="{{ product.image_url }}"
+            alt="image du produit"
+          />
+          {% if product.nutriscore == "A" %}
+          <span class="card-score-A">A</span>
+          {% elif product.nutriscore == "B" %}
+          <span class="card-score-B">B</span>
+          {% elif product.nutriscore == "C" %}
+          <span class="card-score-C">C</span>
+          {% elif product.nutriscore == "D" %}
+          <span class="card-score-D">D</span>
+          {% elif product.nutriscore == "E" %}
+          <span class="card-score-E">E</span>
+          {% endif %}
+
+          <div class="card-body text-center">
+            {% comment %}
+            <a href="{% url 'products:product' product.id %}" target="_blank">
+              {% endcomment %}
+              <p class="card-title">{{ product.name }}</p>
+              {% comment %}
+            </a>
+            {% endcomment %}
+            <p>[ ] Substituer</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
