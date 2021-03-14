@@ -24,26 +24,16 @@
             src="{{ product.image_url }}"
             alt="image du produit"
           />
-          {% if product.nutriscore == "A" %}
-          <span class="card-score-A">A</span>
-          {% elif product.nutriscore == "B" %}
-          <span class="card-score-B">B</span>
-          {% elif product.nutriscore == "C" %}
-          <span class="card-score-C">C</span>
-          {% elif product.nutriscore == "D" %}
-          <span class="card-score-D">D</span>
-          {% elif product.nutriscore == "E" %}
-          <span class="card-score-E">E</span>
-          {% endif %}
+          <span class="card-score-{{ product.nutriscore }}"
+            >{{ product.nutriscore }}</span
+          >
 
           <div class="card-body text-center">
             {% comment %}
-            <a href="{% url 'products:product' product.id %}" target="_blank">
+              <a href="/product/{{ product.id }}/" target="_blank">
               {% endcomment %}
               <p class="card-title">{{ product.name }}</p>
-              {% comment %}
             </a>
-            {% endcomment %}
             <p>[ ] Substituer</p>
           </div>
         </div>
