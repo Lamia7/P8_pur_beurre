@@ -7,14 +7,5 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("home/", views.home, name="home"),
     path("products/", views.products, name="products"),
+    path("product/<int:product_id>/", views.product, name="product"),
 ]
-
-"""
-from search import views as search_views
-
-urlpatterns = [
-    path('', search_views.home, name="home"),
-    path('home/', search_views.home, name="home"),
-    path('products/', search_views.products, name="products")
-]
-"""

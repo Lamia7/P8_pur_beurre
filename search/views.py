@@ -27,3 +27,11 @@ def products(request):
         }
         # send context to products.html template and render this template
         return render(request, "search/products.html", context)
+
+
+def product(request, product_id):
+    #try:
+    product = Product.objects.get(pk=product_id)
+    context = {'product': product}
+    #except Product.DoesNotExist:
+    return render(request, 'search/product.html', context)

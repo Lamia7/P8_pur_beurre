@@ -32,6 +32,7 @@
             {% comment %}
               <a href="/product/{{ product.id }}/" target="_blank">
               {% endcomment %}
+            <a href="{% url 'search:product' product.id %}" target="_blank">
               <p class="card-title">{{ product.name }}</p>
             </a>
             <p>[ ] Substituer</p>
