@@ -29,13 +29,15 @@
           >
 
           <div class="card-body text-center">
-            {% comment %}
-              <a href="/product/{{ product.id }}/" target="_blank">
-              {% endcomment %}
             <a href="{% url 'search:product' product.id %}" target="_blank">
               <p class="card-title">{{ product.name }}</p>
             </a>
-            <p>[ ] Substituer</p>
+            <a
+              href="{% url 'search:substitutes' product.id %}"
+              class="btn btn-primary"
+              target="_blank"
+              >Substituer</a
+            >
           </div>
         </div>
       </div>

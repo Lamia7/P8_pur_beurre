@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.db.models import Count
 
 from .forms import MainSearchForm
-from .models import Product
+from .models import Product, Category
 
 
 def home(request):
@@ -30,8 +31,28 @@ def products(request):
 
 
 def product(request, product_id):
-    #try:
+    # try:
     product = Product.objects.get(pk=product_id)
     context = {'product': product}
-    #except Product.DoesNotExist:
+    # except Product.DoesNotExist:
     return render(request, 'search/product.html', context)
+
+
+def substitutes(request, product_id):
+
+    # Find product searched by user with id
+    product_query = Product.objects.get(pk=product_id)
+
+    # Find categories of the searched_product
+    product_query_cat = Category.objects.filter(product__id=product_query.id)
+
+    # Find max 9 substitutes with better nutriscore and at least 3 categories in common
+    substitutes = Product.objects.filter(categories__in=product_query_cat).annotate(nb_cat=Count(
+        "categories")).filter(nb_cat__gte=3).filter(nutriscore__lt=product_query.nutriscore).order_by("nutriscore")[:9]
+
+    context = {
+        'product': product_query,
+        'substitutes': substitutes
+    }
+
+    return render(request, 'search/substitutes.html', context)

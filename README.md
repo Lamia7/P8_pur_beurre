@@ -40,6 +40,14 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 - [x] Create models for products, categories and favorites
 - [x] Download data from OpenFoodFacts API
 - [x] Create database and insert data into it
+- [x] Create products view (result of product research) + tests
+- [x] Create product detail view + tests
+- [x] Create algo to find substitutes (in substitutes' view)
+- [x] Create substitutes view
+- [ ] Create feature to save favorite product-substitute
+- [ ] Create page that displays favorites
+- [ ] Create legal page
+- [ ] Deploy
 
 ### Ressources used to create this program 🔧
 ***BACK***
