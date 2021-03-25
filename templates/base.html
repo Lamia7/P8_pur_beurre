@@ -72,13 +72,9 @@
           <ul class="navbar-nav ml-auto my-2 my-lg-0">
             <li class="nav-item">
               <div class="input-group input-group-sm">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Rechercher un produit"
-                  aria-label="search_input"
-                  aria-describedby="search_input"
-                />
+                <form action="{% url 'search:products' %}" method="POST">
+                  {% csrf_token %} {{ nav_search_form }}
+                </form>
               </div>
             </li>
             <li class="nav-item">

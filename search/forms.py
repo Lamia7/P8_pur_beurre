@@ -18,8 +18,15 @@ class MainSearchForm(forms.Form):
     )
 
 
-"""class NavSearchForm(forms.Form):
+class NavSearchForm(forms.Form):
     product_search = forms.CharField(
         label='', 
-        max_length=70
-        )"""
+        max_length=70,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Entrez un produit",
+                "class": "form-control",
+                "type": "text",
+            }
+        )
+    )
