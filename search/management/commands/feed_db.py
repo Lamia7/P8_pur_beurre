@@ -15,6 +15,7 @@ class Command(BaseCommand):
         self.clear_db()
 
         # Launches import of data from API
+        print("Data import from API launched. Please wait...")
         myapi = Api()
         products = myapi.avoid_empty()
 
