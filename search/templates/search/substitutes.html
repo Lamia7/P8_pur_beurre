@@ -25,10 +25,15 @@
   </div>
 </header>
 <section class="page-section bg-light" id="products">
-  <h3 class="text-center">Voici les substituts possibles pour ce produit :</h3>
   <div class="container">
     <div class="row">
-      {% if substitutes %} {% for substitute in substitutes %}
+      {% if substitutes %}
+      <div class="col-12">
+        <h3 class="text-center">
+          Voici les substituts possibles pour ce produit :
+        </h3>
+      </div>
+      {% for substitute in substitutes %}
       <div class="col-lg-4 col-md-12">
         <div class="card mx-1 my-3 shadow p-3 mb-5 bg-white rounded">
           <img
@@ -44,7 +49,10 @@
             <a href="{% url 'search:product' substitute.id %}" target="_blank">
               <p class="card-title">{{ substitute.name }}</p>
             </a>
+            {% if user.is_authenticated %}
             <p>[ ] Sauvegarder</p>
+
+            {% endif %}
           </div>
         </div>
       </div>
@@ -59,5 +67,15 @@
       {% endif %}
     </div>
   </div>
+  {% if user.is_authenticated == False %}
+  <p class="pt-5 text-center">
+    Vous pouvez enregistrer des substituts sur votre espace "Mes aliments".
+  </p>
+  <div class="text-center">
+    <a href="{% url 'login' %}" class="btn btn-primary">Me connecter</a>
+    <a href="{% url 'register' %}" class="btn btn-secondary">M'inscrire</a>
+  </div>
+  {% endif %}
 </section>
+
 {% endblock content %}
