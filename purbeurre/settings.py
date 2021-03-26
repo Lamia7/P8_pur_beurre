@@ -155,7 +155,8 @@ STATICFILES_DIRS = [
 # Dj Crispy forms library
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'home'
+# Page displayed once login
+LOGIN_REDIRECT_URL = 'search:home'
 
 """when user tries to go to a page only available to logged in users,
 redirects to the login page, then to the page they tried to access to (@decorators in views)"""

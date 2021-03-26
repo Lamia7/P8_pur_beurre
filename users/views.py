@@ -1,5 +1,5 @@
 from django.contrib.auth import login, authenticate
-from .forms import UserRegisterForm, UserAuthenticationForm  # uses custom form instead of UserCreationForm
+from .forms import UserRegisterForm  # uses custom form instead of UserCreationForm
 #from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
