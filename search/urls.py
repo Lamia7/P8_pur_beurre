@@ -14,4 +14,5 @@ urlpatterns = [
          views.save_favorite, name="save_favorite"),
     path("favorites/",
          views.favorites, name="favorites"),
+     path("legal_notice/", views.legal_notice, name="legal_notice"),
 ]

@@ -87,3 +87,8 @@ def favorites(request):
     }
 
     return render(request, 'search/favorites.html', context)
+
+
+def legal_notice(request):
+    """Displays the legal notice page with infos"""
+    return render(request, 'search/legal_notice.html')
