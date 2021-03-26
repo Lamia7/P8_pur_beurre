@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 
 from .forms import MainSearchForm
-from .models import Product, Category
+from .models import Product, Category, Favorite
+from users.models import User
 
 
 def home(request):
@@ -56,3 +58,32 @@ def substitutes(request, product_id):
     }
 
     return render(request, 'search/substitutes.html', context)
+
+
+@login_required
+def save_favorite(request, product_id, substitute_id):
+    """Saves the substitute and product searched as favorite
+    if user is logged in"""
+
+    product = Product.objects.get(pk=product_id)
+    substitute = Product.objects.get(pk=substitute_id)
+    user = User.objects.get(pk=request.user.id)  # request.user for current user connected
+    favorite = Favorite(product=product, substitute=substitute, user=user)
+    # Save this as a favorite in DB
+    favorite.save()
+
+    return redirect('search:favorites')
+
+
+@login_required
+def favorites(request):
+    """Displays the favorites for the logged in user"""
+
+    # Find favorites in DB according to user id
+    favorites = Favorite.objects.filter(user_id=request.user.id)
+
+    context = {
+        'favorites': favorites,
+    }
+
+    return render(request, 'search/favorites.html', context)

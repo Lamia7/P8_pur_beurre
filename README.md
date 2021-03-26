@@ -17,14 +17,14 @@ Activate the virtual environment: `source venv/bin/activate` <br>
 _Install all the libraries through the requirements file: ... <br>_
 Run the application: `python3 manage.py runserver` and go to your localhost : `http://127.0.0.1:8000/`
 
-(To deactivate the virtual environment, run this command: ``)
+(To deactivate the virtual environment, run this command: `exit`)
 
 ### How does it work ?
 
 ### Features 📋
 + Authentication
-+ (Research of a product and find a healthier substitute)
-+ (Save substitutes)
++ Research of a product and find a healthier substitute
++ Save substitutes as favorites with option to delete
 
 ### Checklist 📝
 - [x] Download postgreSQL, added django + psycopg2 + libpq-dev
@@ -44,9 +44,12 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 - [x] Create product detail view + tests
 - [x] Create algo to find substitutes (in substitutes' view)
 - [x] Create substitutes view
-- [ ] Create feature to save favorite product-substitute
-- [ ] Create page that displays favorites
+- [x] Create feature to save favorite product-substitute
+- [x] Create page that displays favorites
+- [ ] Add option to delete favorites
 - [ ] Create legal page
+- [ ] Add docstrings if needed
+- [ ] Check PEP8 with flake8 and refacto with black + manually
 - [ ] Deploy
 
 ### Ressources used to create this program 🔧
@@ -63,6 +66,7 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 
 ***EXTERNAL RESSOURCES***
 - Web server /  HTTP server : [Gunicorn](https://gunicorn.org/)
+- REST API : [OpenFoodFacts](https://fr.openfoodfacts.org/)
 
 ### Author 📝
 [Lamia EL RALIMI](https://github.com/Lamia7)
