@@ -44,13 +44,15 @@
         </div>
       </div>
       {% endfor %} {% else %}
-      <p>
+      <div class="text-center col-12">
         Désolé, nous n'avons pas trouvé de produit correspondant à votre
         recherche. Une autre recherche en tête ?
-        <a href="{% url 'search:home' %}" class="btn btn-primary"
-          >C'est par ici</a
-        >
-      </p>
+        <div class="p-3">
+          <a href="{% url 'search:home' %}" class="btn btn-primary"
+            >C'est par ici.</a
+          >
+        </div>
+      </div>
 
       {% endif %}
     </div>

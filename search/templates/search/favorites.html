@@ -52,13 +52,15 @@
         </div>
       </div>
       {% endfor %} {% else %}
-      <p class="p-5">
+      <div class="text-center col-12">
         Vous n'avez pas encore enregistré des substituts en favoris. Une
         recherche en tête ?
-        <a href="{% url 'search:home' %}" class="btn btn-primary"
-          >C'est par ici.</a
-        >
-      </p>
+        <div class="p-3">
+          <a href="{% url 'search:home' %}" class="btn btn-primary"
+            >C'est par ici.</a
+          >
+        </div>
+      </div>
       {% endif %}
     </div>
   </div>
