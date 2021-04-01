@@ -18,17 +18,21 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
 from users import views as users_views
-# from search import views as search_views
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("", search_views.home, name="home"),  #works as well, import search view bfore
     # if path is empty, will look for views in the search app
     path("", include("search.urls")),
-    # path("search/", include("search.urls")), #works as well, will add search/ in URL before templates URL
     path("register/", users_views.register, name="register"),
     path("account/", users_views.account, name="account"),
-    path("login/", auth_views.LoginView.as_view(template_name='login.html'), name="login"),
-    path("logout/", auth_views.LogoutView.as_view(template_name='logout.html'), name="logout"),
+    path(
+        "login/", auth_views.LoginView.as_view(template_name="login.html"),
+        name="login"
+    ),
+    path(
+        "logout/",
+        auth_views.LogoutView.as_view(template_name="logout.html"),
+        name="logout",
+    ),
 ]
