@@ -11,6 +11,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     """Represents the product table"""
 
@@ -31,17 +32,29 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.name}, {self.nutriscore}"
 
+
 class Favorite(models.Model):
     """Represents the favorite table
     relation plusieurs à un
-    product: lié à un produit par ForeignKey. 1 pdt peut être dans pls lignes favoris
-    substitute: peut avoir un seul produit
+    product: linked to product by ForeignKey
+    substitute: linked to product by ForeignKey
+    user: linked to user by ForeignKey
+    1 user can have different favorites
     """
 
-    # CASCADE:if is deleted in Products'table, will be deleted here NOT the opposite
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="favorite_product")  
-    substitute = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="favorite_substitute")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favorite_user")
+    # CASCADE:if is deleted in Products'table,
+    # will be deleted here NOT the opposite
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="favorite_product"
+    )
+    substitute = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="favorite_substitute"
+    )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="favorite_user"
+    )
 
     def __str__(self):
-        return f"Produit: {self.product}, Substitut: {self.substitute}, User: {self.user}"
+        return (
+            f"Produit: {self.product}, Substitut: {self.substitute}, User: {self.user}"
+        )

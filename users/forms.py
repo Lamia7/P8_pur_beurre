@@ -6,18 +6,10 @@ from .models import User
 
 class UserRegisterForm(UserCreationForm):
     """Customized form that creates users"""
-    
-    email = forms.EmailField(max_length=254, help_text='Obligatoire')
-    username = forms.CharField(max_length=60, help_text='Obligatoire')
+
+    email = forms.EmailField(max_length=254, help_text="Obligatoire")
+    username = forms.CharField(max_length=60, help_text="Obligatoire")
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
-
-"""class UserAuthenticationForm(UserCreationForm):
-
-    email = forms.EmailField(max_length=254)
-
-    class Meta:
-        model = User
-        fields = ['email', 'password2']"""
+        fields = ["email", "username", "password1", "password2"]

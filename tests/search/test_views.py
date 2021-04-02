@@ -34,13 +34,8 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "search/products.html")
 
     def test_product_details_page(self):
-        # product = Product.objects.get(pk=self.product_id)
-        # context = {"product": product}
-
-        # results = product_search
         response = self.client.get(self.product_details_url)
 
         self.assertEqual(response.status_code, 200)
-        # print(response.context['product'].name)
         self.assertEqual(response.context["product"].name, "Nutella biscuits")
         self.assertTemplateUsed(response, "search/product.html")
