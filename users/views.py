@@ -21,7 +21,7 @@ def register(request):
             # request, f"Compte créé pour l'adresse email : {email} !")
             user = authenticate(email=email, password=raw_password)
             login(request, user)
-            return redirect("login")
+            return redirect("search:home")
     else:
         form = UserRegisterForm()
     return render(
