@@ -1,10 +1,9 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-
 from selenium import webdriver
 
 # from selenium.webdriver.firefox.webdriver import WebDriver
 
-from selenium.webdriver.firefox.options import Options
+# from selenium.webdriver.firefox.options import Options
 import os
 
 
@@ -13,8 +12,8 @@ class SeleniumRegisterTest(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         
-        firefox_options = Options()
-        firefox_options.add_argument("--headless")
+        #firefox_options = Options()
+        #firefox_options.add_argument("--headless")
         geckodriver = os.getcwd() + "/geckodriver"
         #cls.selenium = webdriver.Firefox(executable_path=geckodriver, options=firefox_options)
         cls.selenium = webdriver.Firefox(executable_path=geckodriver)
@@ -27,14 +26,7 @@ class SeleniumRegisterTest(StaticLiveServerTestCase):
         #driver.get('http://google.com/')
         #driver.quit()
         # FIN DE FONCTIONNE
-        
-        # .selenium = WebDriver(geckodriver)
-        # cls.driver = webdriver.Chrome(
-        # chrome_options=chrome_options,
-        # executable_path=chrome_driver,
-        # )
-        # cls.selenium = webdriver.Chrome()
-        # cls.selenium.implicitly_wait(10)
+
 
     @classmethod
     def tearDownClass(cls):
@@ -56,3 +48,11 @@ class SeleniumRegisterTest(StaticLiveServerTestCase):
         self.selenium.find_element_by_class_name("btn").click()
         # Checks if icon "mon_compte" in DOM, means logged in
         self.selenium.find_element_by_id("mon_compte")
+
+    """def test_login(self):
+        self.selenium.get("%s%s" % (self.live_server_url, "/login/"))
+        username_input = self.selenium.find_element_by_name("username")
+        username_input.send_keys("user1@gmail.com")
+        password_input = self.selenium.find_element_by_name("password")
+        password_input.send_keys("password1234")
+        self.selenium.find_element_by_class_name("btn").click()"""
