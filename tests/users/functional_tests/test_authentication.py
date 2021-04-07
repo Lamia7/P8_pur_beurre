@@ -1,3 +1,7 @@
+"""
+Functional test using Selenium to test the behavior
+Check README file to to launch this test.
+"""
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 
@@ -18,6 +22,7 @@ class SeleniumRegisterTest(StaticLiveServerTestCase):
         super().tearDownClass()
     
     def test_register(self):
+        """Launches the functional test for the registration and automatical loggin feature"""
         # Access register page and fill fields
         self.selenium.get("%s%s" % (self.live_server_url, "/register/"))
         email_input = self.selenium.find_element_by_name("email")

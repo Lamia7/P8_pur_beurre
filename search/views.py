@@ -9,6 +9,7 @@ from users.models import User
 
 
 def home(request):
+    """Displays the home page"""
     main_search_form = MainSearchForm()  # instanciate form
     context = {
         "main_search_form": main_search_form,
@@ -18,6 +19,7 @@ def home(request):
 
 
 def products(request):
+    """Displays the result page with list of products according to user input"""
     if request.method == "POST":
         # get the value of name="" from template
         product_search = request.POST["product_search"]
@@ -37,6 +39,11 @@ def products(request):
 
 
 def product(request, product_id):
+    """Displays the product details page
+
+    Args:
+        product_id (int): Id of the product
+    """
     # try:
     product = Product.objects.get(pk=product_id)
     context = {"product": product}
@@ -45,7 +52,10 @@ def product(request, product_id):
 
 
 def substitutes(request, product_id):
-
+    """Displays the result page with list of substitutes for the selected product
+    
+    Args:
+        product_id (int): Id of the product"""
     # Find product searched by user with id
     product_query = Product.objects.get(pk=product_id)
 

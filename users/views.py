@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 
 
 def register(request):
-    """View for the registration page"""
+    """Displays the registration page"""
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -31,5 +31,5 @@ def register(request):
 
 @login_required  # only allows this page to logged_in users
 def account(request):
-    """View for the account page when a user is logged in"""
+    """Displays the account page when a user is logged in"""
     return render(request, "account.html")

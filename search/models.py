@@ -35,7 +35,6 @@ class Product(models.Model):
 
 class Favorite(models.Model):
     """Represents the favorite table
-    relation plusieurs à un
     product: linked to product by ForeignKey
     substitute: linked to product by ForeignKey
     user: linked to user by ForeignKey

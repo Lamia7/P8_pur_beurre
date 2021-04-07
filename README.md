@@ -23,7 +23,7 @@ _If you need to install pipenv : (with pip for Linux) `pip3 install pipenv` (wit
 - `createdb <db_name>`
 - Check the database PORT
 - Launch the migration : `python3 manage.py migrate`
-- Launche the command that feeds the database : `python3 manage.py feed_db`
+- Launch the command that feeds the database : `python3 manage.py feed_db`
 
 
 **Clone the repository from Github by running this command:**
@@ -67,10 +67,16 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 - [x] Create feature to save favorite product-substitute
 - [x] Create page that displays favorites
 - [x] Create legal page
-- [ ] Add docstrings if needed
-- [ ] Check PEP8 with flake8 and refacto with black + manually
+- [x] Added a functional test with Selenium
+- [x] Add docstrings if needed
+- [x] Check PEP8 with flake8 and refacto with black + manually
 - [ ] Deploy
 
+### Tests 🧪
+- Launches the unit tests : `coverage run --source='.' manage.py test`
+- Display the coverage report : `coverage report`
+- Display the html coverage report details : `coverage html`
+- Launches the functional test with Selenium : `./manage.py test tests.users.functional_tests`
 ### Ressources used to create this program 🔧
 ***BACK***
 - Language : Python 3.8
