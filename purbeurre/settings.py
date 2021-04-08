@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv, find_dotenv
-import django_heroku
 
 
 load_dotenv(find_dotenv())
@@ -63,6 +62,12 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+MIDDLEWARE_CLASSES = (
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+)
 
 ROOT_URLCONF = "purbeurre.urls"
 
@@ -156,6 +161,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+# Whitenoise manages static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 # Dj Crispy forms library
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
@@ -166,6 +174,3 @@ LOGIN_REDIRECT_URL = "search:home"
 redirects to the login page,
 then to the page they tried to access to (@decorators in views)"""
 LOGIN_URL = "login"
-
-# Activate django_heroku
-django_heroku.settings(locals())
