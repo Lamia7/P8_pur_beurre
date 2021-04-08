@@ -5,7 +5,6 @@ from users.models import User
 
 
 class ModelsTestCase(TestCase):
-
     def test_product_str(self):
         product = Product.objects.create(
             name="Prince",
@@ -31,21 +30,18 @@ class ModelsTestCase(TestCase):
 
     def test_favorite_str(self):
         product = Product.objects.create(
-            name="Prince",
-            barcode="7622210449283",
-            nutriscore="D"
+            name="Prince", barcode="7622210449283", nutriscore="D"
         )
         substitute = Product.objects.create(
-            name="Biscuit sésame",
-            barcode="3175680011480",
-            nutriscore="C"
+            name="Biscuit sésame", barcode="3175680011480", nutriscore="C"
         )
         user = User.objects.create(
-            username="username1",
-            email="username1@gmail.com",
-            password="password1"
+            username="username1", email="username1@gmail.com", password="password1"
         )
         favorite = Favorite.objects.create(
-            product=product, substitute=substitute, user=user)
+            product=product, substitute=substitute, user=user
+        )
         self.assertEqual(
-            str(favorite), f"Produit: {favorite.product}, Substitut: {favorite.substitute}, User: {favorite.user}")
+            str(favorite),
+            f"Produit: {favorite.product}, Substitut: {favorite.substitute}, User: {favorite.user}",
+        )

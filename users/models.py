@@ -1,16 +1,24 @@
 from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
-        """
-        Creates and saves a User with the given email, username and password.
+        """Creates and saves a User with the given data
+
+        Args:
+            email (str): Given email.
+            username (str): Given username.
+            password (str, optional): Given password. Defaults to None.
+
+        Raises:
+            ValueError: In case no email address entered
+
+        Returns:
+            obj: User
         """
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError("Users must have an email address")
 
         user = self.model(
             email=self.normalize_email(email),
@@ -22,8 +30,15 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, username, password=None):
-        """
-        Creates and saves a superuser with the given email, username and password.
+        """Creates and saves a superuser with the given data
+
+        Args:
+            email (str): Given email.
+            username (str): Given username.
+            password (str, optional): Given password. Defaults to None.
+
+        Returns:
+            obj: Superuser
         """
         user = self.create_user(
             email,
@@ -37,8 +52,9 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     """Create table with custom fields in database"""
+
     email = models.EmailField(
-        verbose_name='email address',
+        verbose_name="email address",
         max_length=255,
         unique=True,
     )
@@ -48,8 +64,8 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'  # login_field
-    REQUIRED_FIELDS = ['username']  # pwd is automatically required
+    USERNAME_FIELD = "email"  # login_field
+    REQUIRED_FIELDS = ["username"]  # pwd is automatically required
 
     def __str__(self):
         return self.email
@@ -69,4 +85,3 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
-        

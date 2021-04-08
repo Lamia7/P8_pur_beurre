@@ -1,5 +1,4 @@
-{% extends 'base.html' %} {% block content %} {% load static %} 
-{% load crispy_forms_tags %}
+{% extends 'base.html' %} {% block content %} {% load static %} {% load crispy_forms_tags %}
 <!-- Masthead-->
 <header class="masthead">
   <div class="container h-100">
@@ -17,31 +16,25 @@
         <hr class="divider my-4" />
       </div>
       <div class="col-lg-8 align-self-baseline">
-        <div class="input-group input-group-lg">
-          <form action="{% url 'search:products' %}" method="POST">
-            {% csrf_token %} {{ main_search_form }}
-            <div class="input-group-append">
-              <button
-                class="btn btn-primary"
-                id="inputGroup-sizing-lg"
-                type="submit"
-              >
-                Chercher
-              </button>
-            </div>
-          </form>
-        </div>
+        <form id="main_form" action="{% url 'search:products' %}" method="POST">
+          {% csrf_token %} {{ main_search_form }}
+          <input
+            class="input-group-append btn btn-primary"
+            type="submit"
+            value="Rechercher"
+          />
+        </form>
       </div>
     </div>
   </div>
 </header>
 <!-- About-->
-<section class="page-section bg-primary" id="about">
+<section class="page-section bg-secondary" id="about">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8 text-center">
         <h2 class="text-white mt-0">Colette et Remy</h2>
-        <hr class="divider light my-4" />
+        <hr class="divider primary my-4" />
         <p class="text-white-50 mb-4">
           Pur Beurre est l'initiative de deux amoureux de la gastronomie
           française, Colette Tatou et Rémy, que vous avez déjà certainement
@@ -72,7 +65,10 @@
       <div class="col-lg-8 text-center">
         <h2 class="mt-0">Contactez-nous!</h2>
         <hr class="divider my-4" />
-        <p class="text-muted mb-5">blablabablablaalbalablaablabalbala!</p>
+        <p class="text-muted mb-5">
+          Une question? Une suggestion? N'hésitez pas à nous contacter par email
+          ou téléphone.
+        </p>
       </div>
     </div>
     <div class="row">

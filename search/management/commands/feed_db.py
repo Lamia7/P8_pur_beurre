@@ -3,12 +3,11 @@ from django.db import IntegrityError
 
 from progress.bar import ShadyBar
 
-from search.models import Product, Category
+from search.models import Product, Category, Favorite
 from search.api import Api
 
 
 class Command(BaseCommand):
-
     def handle(self, *args, **kwargs):
         """Feeds the database with data from API"""
 
@@ -20,25 +19,33 @@ class Command(BaseCommand):
         products = myapi.avoid_empty()
 
         if products is not None:
-            self.stdout.write(self.style.SUCCESS(
-                "Products import from API : DONE"))
+            self.stdout.write(
+                self.style.SUCCESS("Products import from API : DONE")
+            )
         else:
-            self.stdout.write(self.style.ERROR(
-                "Products import from API : ERROR"))
+            self.stdout.write(
+                self.style.ERROR("Products import from API : ERROR")
+            )
             return
 
-        with ShadyBar('Inserting to database...', max=len(products), suffix='%(percent)d%%') as bar:
+        with ShadyBar(
+            "Inserting to database...",
+            max=len(products), suffix="%(percent)d%%"
+        ) as bar:
             for product in products:
-                name = product.get("product_name_fr")[
-                    :150].strip().lower().capitalize()
+                name = product.get(
+                    "product_name_fr"
+                    )[:150].strip().lower().capitalize()
                 brands = product.get("brands")[:150].upper()
                 barcode = product.get("code")[:13].strip()
                 url = product.get("url")
                 image_url = product.get("image_url")
                 image_small_url = product.get("image_small_url")
                 nutriscore = product.get("nutriscore_grade")[0].upper()
-                categories = categories = [name.strip().lower().capitalize()
-                                           for name in product['categories'].split(',')]
+                categories = categories = [
+                    name.strip().lower().capitalize()
+                    for name in product["categories"].split(",")
+                ]
 
                 # Get some of the nutriments keys/values
                 nutriments_list = [
@@ -46,7 +53,7 @@ class Command(BaseCommand):
                     "sugars_100g",
                     "sodium_100g",
                     "fat_100g",
-                    "salt_100g"
+                    "salt_100g",
                 ]
 
                 nutriments_dict = {}
@@ -81,7 +88,8 @@ class Command(BaseCommand):
                     saved_categories = []
                     for category in categories:
                         cat_obj = Category(name=category)
-                        if not category in saved_categories:  # Avoid duplicated categories
+                        if category not in saved_categories:
+                            # Avoid duplicated categories
                             saved_categories.append(category)
                             try:
                                 cat_obj.save()
@@ -105,5 +113,5 @@ class Command(BaseCommand):
         cat_obj = Category.objects.all()
         cat_obj.delete()
 
-        #favorite_obj = Favorite.objects.all()
-        # favorite_obj.delete()
+        favorite_obj = Favorite.objects.all()
+        favorite_obj.delete()

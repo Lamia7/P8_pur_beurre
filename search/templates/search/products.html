@@ -13,10 +13,13 @@
   </div>
 </header>
 <section class="page-section bg-light" id="products">
-  <h3 class="text-center">Voici le résultat de votre recherche :</h3>
   <div class="container">
     <div class="row">
-      {% if products %} {% for product in products %}
+      {% if products %}
+      <div class="col-12">
+        <h3 class="text-center">Voici le résultat de votre recherche :</h3>
+      </div>
+      {% for product in products %}
       <div class="col-lg-4 col-md-12">
         <div class="card mx-1 my-3 shadow p-3 mb-5 bg-white rounded">
           <img
@@ -35,20 +38,22 @@
             <a
               href="{% url 'search:substitutes' product.id %}"
               class="btn btn-primary"
-              target="_blank"
               >Substituer</a
             >
           </div>
         </div>
       </div>
       {% endfor %} {% else %}
-      <p class="p-5">
+      <div class="text-center col-12">
         Désolé, nous n'avons pas trouvé de produit correspondant à votre
         recherche. Une autre recherche en tête ?
-        <a href="{% url 'search:home' %}" class="btn btn-primary"
-          >C'est par ici.</a
-        >
-      </p>
+        <div class="p-3">
+          <a href="{% url 'search:home' %}" class="btn btn-primary"
+            >C'est par ici.</a
+          >
+        </div>
+      </div>
+
       {% endif %}
     </div>
   </div>

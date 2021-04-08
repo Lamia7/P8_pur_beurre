@@ -4,13 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+Django = "*"
 psycopg2 = "*"
 python-dotenv = "*"
 django-crispy-forms = "*"
 requests = "*"
 progress = "*"
 coverage = "*"
+flake8 = "*"
+black = "==20.8b1"
+selenium = "*"
 
 [dev-packages]
 
