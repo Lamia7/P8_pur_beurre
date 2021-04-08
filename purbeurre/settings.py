@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # False if ENV=prod, by default, ENV=development (True)
 DEBUG = False if os.environ.get("ENV", "development") == "production" else True
 
-ALLOWED_HOSTS = ['.herokuapps.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['miam-purbeurre.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
