@@ -46,7 +46,7 @@
       id="mainNav"
     >
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'search:home' %}">
           <img
             class="img-navbar"
             src="{% static 'assets/img/logo_pur_beurre.png' %}"
@@ -103,7 +103,7 @@
         </div>
       </div>
     </nav>
-    {% block content %} {% endblock %}
+    {% block content %} {% endblock content %}
 
     <!-- Footer-->
     <footer class="bg-light py-5">
@@ -113,7 +113,7 @@
             <a href="">Mentions légales</a>
           </div>
           <div class="col-lg-4 mr-auto text-center mb-5 mb-lg-0">
-            <a href="{% url 'home' %}#contact">Contact</a>
+            <a href="{% url 'search:home' %}#contact">Contact</a>
           </div>
         </div>
       </div>
