@@ -17,6 +17,8 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
+ENV = os.environ.get("ENV", "development")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # False if ENV=prod, by default, ENV=development (True)
-DEBUG = False if os.environ.get("ENV", "development") == "production" else True
+DEBUG = False if ENV == "production" else True
 
 ALLOWED_HOSTS = ['miam-purbeurre.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -63,11 +65,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-MIDDLEWARE_CLASSES = (
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-)
+if ENV == "production":
+    MIDDLEWARE.append("whitenoise.middleware.WhiteNoiseMiddleware")
 
 ROOT_URLCONF = "purbeurre.urls"
 
