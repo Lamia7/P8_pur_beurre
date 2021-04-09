@@ -16,6 +16,7 @@ black = "==20.8b1"
 selenium = "*"
 gunicorn = "*"
 whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
