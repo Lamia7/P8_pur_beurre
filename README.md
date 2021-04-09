@@ -1,10 +1,10 @@
 # P8: Pur Beurre
-[Trello](https://trello.com/b/cZmk212f/p8) <br>
+[Trello](https://trello.com/b/cZmk212f/p8purbeurre) <br>
 Program only available in French now.
 
 ***How to use it***
 
-👉[Click here to try it](https://miam-purbeurre.herokuapp.com/)👈
+👉[Click here to try it](https://miam-purbeurre.herokuapp.com/)👈<br>
 Create an account<br>
 Search for a product<br>
 Search for a substitute<br>
