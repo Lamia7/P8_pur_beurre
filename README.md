@@ -1,10 +1,10 @@
 # P8: Pur Beurre
-[Trello]()
+[Trello](https://trello.com/b/cZmk212f/p8) <br>
 Program only available in French now.
 
 ***How to use it***
 
-Click here to try it ...<br>
+👉[Click here to try it](https://miam-purbeurre.herokuapp.com/)👈
 Create an account<br>
 Search for a product<br>
 Search for a substitute<br>
@@ -39,8 +39,6 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 
 (To deactivate the virtual environment, run this command: `exit`)
 
-### How does it work ?
-
 ### Features 📋
 + Authentication
 + Research of a product and find a healthier substitute
@@ -70,7 +68,7 @@ Run the application: `python3 manage.py runserver` and go to your localhost : `h
 - [x] Added a functional test with Selenium
 - [x] Add docstrings if needed
 - [x] Check PEP8 with flake8 and refacto with black + manually
-- [ ] Deploy
+- [x] Deploy
 
 ### Tests 🧪
 - Launches the unit tests : `coverage run --source='.' manage.py test`
