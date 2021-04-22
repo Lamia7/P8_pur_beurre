@@ -1,4 +1,4 @@
-# P10: Pur Beurre
+# P8: Pur Beurre
 [Trello](https://trello.com/b/cZmk212f/p8purbeurre) <br>
 Program only available in French now.
 
